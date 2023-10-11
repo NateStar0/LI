@@ -1,9 +1,11 @@
 {
   "FolderOrderSettings": [],
   "ResourceOrderSettings": [
+    {"name":"renderQueue","order":7,"path":"scripts/renderQueue/renderQueue.yy",},
     {"name":"autorun","order":4,"path":"scripts/autorun/autorun.yy",},
     {"name":"fnMain","order":5,"path":"fonts/fnMain/fnMain.yy",},
     {"name":"general","order":3,"path":"scripts/general/general.yy",},
+    {"name":"oTerminal","order":6,"path":"objects/oTerminal/oTerminal.yy",},
     {"name":"rMain","order":1,"path":"rooms/rMain/rMain.yy",},
   ],
 }

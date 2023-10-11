@@ -9,6 +9,9 @@ characterGrid =
 	data : [],
 	
 	queue : [],
+	concatQueue : [],
+	
+	ind : 0,
 	
 	// Methods
 	
@@ -26,53 +29,39 @@ characterGrid =
 			}
 		}
 	},
-}
-
-function queueRectangle(posFrom, posTo, drawColour, drawZ)
-{
-	array_push(characterGrid.queue, 
-	[queueType.rectangle, 
+	
+	getNextIndex : function()
 	{
-		from : posFrom,
-		to : posTo,
-		colour : drawColour,
-		z : drawZ
-	}])
+		var ret = ind;
+		ind++;
+		
+		return ret;
+	}
 }
-
-function queueText(origin, text, drawColour, drawZ)
-{
-	array_push(characterGrid.queue, 
-	[queueType.text, 
-	{
-		from : origin,
-		content : text,
-		colour : drawColour,
-		z : drawZ
-	}])
-}
-
-function queueSprite(origin, text, drawColour, drawZ)
-{
-	array_push(characterGrid.queue, 
-	[queueType.sprite, 
-	{
-		from : origin,
-		content : text,
-		colour : drawColour,
-		z : drawZ
-	}])
-}
-
-function queueClear()
-{
-	characterGrid.queue = [];
-}
-
-queueRectangle({x : 1, y : 1}, {x : 6, y : 8}, COLOUR_BLUE, 1);
-
-queueText({x : 2, y : 2}, "Test!", COLOUR_RED, 2);
 
 characterGrid.generate(characterGrid.width, characterGrid.height);
 
+/*
+createRectangle({x : 1, y : 1}, {x : 6, y : 8}, COLOUR_BLUE, 1);
+createText({x : 2, y : 2}, "Test!", COLOUR_RED, 2);
+*/
+
+
+rectangleCustomQueue = [];
+rectangleQueueIndex = queueGetIndex();
+
+for(var i = 0; i < 64; i++)
+{
+	var tx = irandom(CHARACTER_COUNT_HORIZONTAL)
+	var ty = irandom(CHARACTER_COUNT_VERTICAL)
+	
+	var w = max(irandom(20), 4)
+	var h = max(irandom(12), 4)
+	
+	var c = irandom(14) + 1;
+	
+	array_push(rectangleCustomQueue, createRectangle({x : tx, y : ty}, {x : tx + w, y : ty + h}, global.colourList[c], i));
+}
+
+queueSubmit(rectangleQueueIndex, rectangleCustomQueue);
 

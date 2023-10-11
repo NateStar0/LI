@@ -18,10 +18,12 @@
     "IDEVersion": "2023.8.1.102",
   },
   "resources": [
+    {"id":{"name":"renderQueue","path":"scripts/renderQueue/renderQueue.yy",},},
     {"id":{"name":"oRenderManager","path":"objects/oRenderManager/oRenderManager.yy",},},
     {"id":{"name":"autorun","path":"scripts/autorun/autorun.yy",},},
     {"id":{"name":"fnMain","path":"fonts/fnMain/fnMain.yy",},},
     {"id":{"name":"general","path":"scripts/general/general.yy",},},
+    {"id":{"name":"oTerminal","path":"objects/oTerminal/oTerminal.yy",},},
     {"id":{"name":"rMain","path":"rooms/rMain/rMain.yy",},},
   ],
   "RoomOrderNodes": [

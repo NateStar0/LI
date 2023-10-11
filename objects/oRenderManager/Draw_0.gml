@@ -1,31 +1,46 @@
 /// @description 
 
-array_sort(characterGrid.queue, function(foo, bar) { return foo[1].z - bar[1].z} )
+var newQueue = [];
+var itemsCount = 0;
 
-for(var i = 0; i < array_length(characterGrid.queue); i++)
+var queueLength = array_length(characterGrid.queue);
+
+for(var i = 0; i < queueLength; i++)
 {
-	var item = characterGrid.queue[i];
+	var indivLength = array_length(characterGrid.queue[i]);
+	for(var j = 0; j < indivLength; j++)
+	{
+		newQueue[itemsCount] = characterGrid.queue[i][j];
+		itemsCount++;
+	}
+}
+
+array_sort(newQueue, function(foo, bar) { return foo.data.z - bar.data.z} )
+
+for(var j = 0; j < itemsCount; j++)
+{
+	var item = newQueue[j];
 	
-	switch(item[0])
+	switch(item.type)
 	{
 		case queueType.rectangle:
-			for(var n = item[1].from.x; n < item[1].to.x; n++)
+			for(var n = item.data.from.x; n < item.data.to.x; n++)
 			{
-				for(var m = item[1].from.y; m  < item[1].to.y; m++)
+				for(var m = item.data.from.y; m  < item.data.to.y; m++)
 				{
-					characterGrid.data[n][m] = { value : "#", colour : item[1].colour }
+					characterGrid.data[n][m] = { value : "#", colour : item.data.colour }
 				}
 			}
 		break;
-		
+	
 		case queueType.sprite:
-		
+	
 		break;
-		
+	
 		case queueType.text:
-			for(var n = item[1].from.x; n < item[1].from.x + string_length(item[1].content); n++)
+			for(var n = item.data.from.x; n < item.data.from.x + string_length(item.data.content); n++)
 			{
-				characterGrid.data[n][item[1].from.y] = { value : string_char_at(item[1].content, n - item[1].from.x + 1), colour : item[1].colour }
+				characterGrid.data[n][item.data.from.y] = { value : string_char_at(item.data.content, n - item.data.from.x + 1), colour : item.data.colour }
 			}
 		break;
 	}
@@ -48,7 +63,3 @@ for(var i = 0; i < characterGrid.width; i++)
 		draw_text(i * CHARACTER_WIDTH, j * CHARACTER_HEIGHT, cell.value);	
 	}
 }
-
-
-
-

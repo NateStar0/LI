@@ -7,13 +7,15 @@
 		* Defines globals / macros / enums before instances are able to initialise
 */
 
+randomise();
+
 ///			Macros
 
 #macro GAMENAME "LI"
 
 window_set_caption(GAMENAME);
 
-show_debug_overlay(0)
+show_debug_overlay(1)
 
 // Visual
 
