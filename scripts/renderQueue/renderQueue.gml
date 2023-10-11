@@ -9,8 +9,8 @@ function createRectangle(posFrom, posTo, drawColour, drawZ)
 		from : posFrom,
 		to : posTo,
 		colour : drawColour,
+		},
 		z : drawZ
-	}
 	}
 }
 
@@ -24,8 +24,9 @@ function createText(origin, text, drawColour, drawZ)
 		from : origin,
 		content : text,
 		colour : drawColour,
+		},
 		z : drawZ
-	}}
+	}
 }
 
 function createSprite(origin, text, drawColour, drawZ)
@@ -38,8 +39,9 @@ function createSprite(origin, text, drawColour, drawZ)
 		from : origin,
 		content : text,
 		colour : drawColour,
+		},
 		z : drawZ
-	}}
+	}
 }
 
 function queueGetIndex()

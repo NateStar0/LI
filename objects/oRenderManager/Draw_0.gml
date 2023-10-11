@@ -10,12 +10,12 @@ for(var i = 0; i < queueLength; i++)
 	var indivLength = array_length(characterGrid.queue[i]);
 	for(var j = 0; j < indivLength; j++)
 	{
-		newQueue[itemsCount] = characterGrid.queue[i][j];
+		array_push(newQueue, characterGrid.queue[i][j]);
 		itemsCount++;
 	}
 }
 
-array_sort(newQueue, function(foo, bar) { return foo.data.z - bar.data.z} )
+array_sort(newQueue, function(foo, bar) { return foo.z - bar.z} )
 
 for(var j = 0; j < itemsCount; j++)
 {
@@ -28,7 +28,8 @@ for(var j = 0; j < itemsCount; j++)
 			{
 				for(var m = item.data.from.y; m  < item.data.to.y; m++)
 				{
-					characterGrid.data[n][m] = { value : "#", colour : item.data.colour }
+					characterGrid.data[n][m].value = "#";
+					characterGrid.data[n][m].colour = item.data.colour;
 				}
 			}
 		break;
@@ -40,7 +41,8 @@ for(var j = 0; j < itemsCount; j++)
 		case queueType.text:
 			for(var n = item.data.from.x; n < item.data.from.x + string_length(item.data.content); n++)
 			{
-				characterGrid.data[n][item.data.from.y] = { value : string_char_at(item.data.content, n - item.data.from.x + 1), colour : item.data.colour }
+				characterGrid.data[n][item.data.from.y].value = string_char_at(item.data.content, n - item.data.from.x + 1);
+				characterGrid.data[n][item.data.from.y].colour = item.data.colour;
 			}
 		break;
 	}

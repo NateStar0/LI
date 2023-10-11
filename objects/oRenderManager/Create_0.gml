@@ -60,7 +60,7 @@ for(var i = 0; i < 64; i++)
 	
 	var c = irandom(14) + 1;
 	
-	array_push(rectangleCustomQueue, createRectangle({x : tx, y : ty}, {x : tx + w, y : ty + h}, global.colourList[c], i));
+	array_push(rectangleCustomQueue, createRectangle({x : tx, y : ty}, {x : min(tx + w, characterGrid.width - 1), y : min(ty + h, characterGrid.height - 1)}, global.colourList[c], i));
 }
 
 queueSubmit(rectangleQueueIndex, rectangleCustomQueue);
