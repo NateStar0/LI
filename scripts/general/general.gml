@@ -93,3 +93,7 @@ function pick_weighted(arr)
 	return items[itemCount - 1];
 }
 
+function isUint(str)
+{
+	return (string_length(str) == string_length(string_digits(str)))	
+}

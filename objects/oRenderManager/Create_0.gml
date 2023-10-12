@@ -15,6 +15,9 @@ characterGrid =
 	
 	// Methods
 	
+	/// @param {Real} w
+	/// @param {Real} h
+	
 	generate : function(w, h)
 	{	
 		self.data = [];
@@ -30,9 +33,11 @@ characterGrid =
 		}
 	},
 	
+	/// @returns {Real}
+	
 	getNextIndex : function()
 	{
-		var ret = ind;
+		var ret = max(0, ind);
 		ind++;
 		
 		return ret;
@@ -45,6 +50,11 @@ characterGrid.generate(characterGrid.width, characterGrid.height);
 createRectangle({x : 1, y : 1}, {x : 6, y : 8}, COLOUR_BLUE, 1);
 createText({x : 2, y : 2}, "Test!", COLOUR_RED, 2);
 */
+
+// Backplane
+
+queueIndex = queueGetIndex();
+queueSubmit(queueIndex, [createRectangle({x:0, y:0}, {x:80, y:25}, COLOUR_BLACK, 0)])
 
 
 rectangleCustomQueue = [];
@@ -60,7 +70,7 @@ for(var i = 0; i < 64; i++)
 	
 	var c = irandom(14) + 1;
 	
-	array_push(rectangleCustomQueue, createRectangle({x : tx, y : ty}, {x : min(tx + w, characterGrid.width - 1), y : min(ty + h, characterGrid.height - 1)}, global.colourList[c], i));
+	array_push(rectangleCustomQueue, createRectangle({x : tx, y : ty}, {x : min(tx + w, characterGrid.width), y : min(ty + h, characterGrid.height)}, global.colourList[c], i + 1));
 }
 
 queueSubmit(rectangleQueueIndex, rectangleCustomQueue);

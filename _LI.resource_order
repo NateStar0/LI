@@ -2,6 +2,7 @@
   "FolderOrderSettings": [],
   "ResourceOrderSettings": [
     {"name":"renderQueue","order":7,"path":"scripts/renderQueue/renderQueue.yy",},
+    {"name":"oEntityManager","order":8,"path":"objects/oEntityManager/oEntityManager.yy",},
     {"name":"autorun","order":4,"path":"scripts/autorun/autorun.yy",},
     {"name":"fnMain","order":5,"path":"fonts/fnMain/fnMain.yy",},
     {"name":"general","order":3,"path":"scripts/general/general.yy",},

@@ -41,7 +41,7 @@ for(var j = 0; j < itemsCount; j++)
 		case queueType.text:
 			for(var n = item.data.from.x; n < item.data.from.x + string_length(item.data.content); n++)
 			{
-				characterGrid.data[n][item.data.from.y].value = string_char_at(item.data.content, n - item.data.from.x + 1);
+				characterGrid.data[n][item.data.from.y].value = string_char_at(item.data.content, n - item.data.from.x + 1)
 				characterGrid.data[n][item.data.from.y].colour = item.data.colour;
 			}
 		break;

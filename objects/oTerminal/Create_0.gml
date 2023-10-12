@@ -12,6 +12,8 @@ maximumLength = 34;
 terminalQueue = [];
 queueIndex = queueGetIndex();
 
+terminalColour = COLOUR_WHITE;
+
 clear = function()
 {
 	terminalQueue = [];
@@ -26,6 +28,6 @@ justCleared = true;
 clear();
 
 currentLine = 3;
-array_push(terminalQueue, createText({x : 0, y : 0}, startText, COLOUR_WHITE, 99));
+array_push(terminalQueue, createText({x : 0, y : 0}, startText, terminalColour, 99));
 
 queueSubmit(queueIndex, terminalQueue);

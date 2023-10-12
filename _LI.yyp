@@ -19,6 +19,7 @@
   },
   "resources": [
     {"id":{"name":"renderQueue","path":"scripts/renderQueue/renderQueue.yy",},},
+    {"id":{"name":"oEntityManager","path":"objects/oEntityManager/oEntityManager.yy",},},
     {"id":{"name":"oRenderManager","path":"objects/oRenderManager/oRenderManager.yy",},},
     {"id":{"name":"autorun","path":"scripts/autorun/autorun.yy",},},
     {"id":{"name":"fnMain","path":"fonts/fnMain/fnMain.yy",},},

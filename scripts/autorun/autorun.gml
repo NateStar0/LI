@@ -15,7 +15,7 @@ randomise();
 
 window_set_caption(GAMENAME);
 
-show_debug_overlay(1)
+show_debug_overlay(0);
 
 // Visual
 
@@ -52,6 +52,8 @@ draw_set_font(fnMain);
 #macro COLOUR_BRIGHTCYAN		make_color_rgb(85, 255, 255)
 #macro COLOUR_BRIGHTWHITE		make_color_rgb(255, 255, 255)
 
+///			Globals
+
 global.colourList = [
 COLOUR_BLACK,		
 COLOUR_RED,
@@ -71,8 +73,6 @@ COLOUR_BRIGHTCYAN,
 COLOUR_BRIGHTWHITE,
 ]
 
-///			Globals
-
 
 ///			Enums
 
@@ -81,4 +81,18 @@ enum queueType
 	rectangle, 
 	text,
 	sprite,
+}
+
+enum entityType
+{
+	player,
+	enemy,
+	collider,
+	bulletHostile,
+	bulletFriendly,
+}
+
+enum formType
+{
+	basic, 	
 }
