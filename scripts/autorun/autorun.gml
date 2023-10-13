@@ -95,4 +95,20 @@ enum entityType
 enum formType
 {
 	basic, 	
+	burst,
+	burstQuick,
+	burstTriple,
+	side,
+	sine,
+	tetret,
+	
+	bossBasic,
+}
+
+enum fireType
+{
+	basic, 
+	tetret,
+	slam,
+	height
 }

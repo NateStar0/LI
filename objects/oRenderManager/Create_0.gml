@@ -9,7 +9,6 @@ characterGrid =
 	data : [],
 	
 	queue : [],
-	concatQueue : [],
 	
 	ind : 0,
 	
@@ -73,5 +72,5 @@ for(var i = 0; i < 64; i++)
 	array_push(rectangleCustomQueue, createRectangle({x : tx, y : ty}, {x : min(tx + w, characterGrid.width), y : min(ty + h, characterGrid.height)}, global.colourList[c], i + 1));
 }
 
-queueSubmit(rectangleQueueIndex, rectangleCustomQueue);
+//queueSubmit(rectangleQueueIndex, rectangleCustomQueue);
 

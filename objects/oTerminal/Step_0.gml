@@ -38,8 +38,18 @@ if(keyboard_check(vk_anykey))
 		switch(command)
 		{
 			case "help":
-				currentLine++;
-				array_push(terminalQueue, createText({x : 0, y : currentLine - 1}, "Test", terminalColour, 100));
+				clear();
+				currentLine--;
+			
+				var helpString = "Line Interface Game!\n\nhelp-lists commands\nstart(n)-starts level n\nup(n)-moves n units up\ndown(n)-moves n units down\nleft(n)-moves n units left\nright(n)-moves n units right\nfire-creates projectiles\nmode-changes the fire mode\nclear-clears the console";
+				var helpArray = string_split(helpString, "\n");
+				
+				for(var i = 0; i < array_length(helpArray); i++)
+				{
+					currentLine++;
+					array_push(terminalQueue, createText({x : 0, y : currentLine - 1}, helpArray[i], terminalColour, 100));
+				}
+				
 			break;
 			
 			case "color":
@@ -153,11 +163,68 @@ if(keyboard_check(vk_anykey))
 			break;
 			
 			case "mode":
-			
+				with(oEntityManager)
+				{
+					for(var i = 0; i < array_length(entities); i++)
+					{
+						var entity = entities[i];
+						
+						if(entity.type == entityType.player)
+						{
+							entities[i].data.mode++;
+							
+							if(entities[i].data.mode == fireType.height)
+							{
+								entities[i].data.mode = fireType.basic;	
+							}
+						}
+					}
+				}
+				
+				var typeStrings = ["basic", "multidirectional", "thumping"];
+				
+				currentLine++;
+				array_push(terminalQueue, createText({x : 0, y : currentLine - 1}, $"Set to {typeStrings[oEntityManager.entities[0].data.mode]} mode", terminalColour, 100));
 			break;
 			
 			case "fire":
+				with(oEntityManager)
+				{
+					for(var i = 0; i < array_length(entities); i++)
+					{
+						var entity = entities[i];
+						
+						if(entity.type == entityType.player)
+						{
+							switch(entities[i].data.mode)
+							{
+								case fireType.basic:
+									array_push(entities, bulletGood({x:entity.data.position.x, y:entity.data.position.y-1}, {x:0, y:-1}));
+								break;
+								
+								case fireType.slam:
+									array_push(entities, bulletGood({x:entity.data.position.x-1, y:entity.data.position.y-1}, {x:0, y:-1}));
+									array_push(entities, bulletGood({x:entity.data.position.x, y:entity.data.position.y-1}, {x:0, y:-1}));
+									array_push(entities, bulletGood({x:entity.data.position.x+1, y:entity.data.position.y-1}, {x:0, y:-1}));
+								break;
+								
+								case fireType.tetret:
+									array_push(entities, bulletGood({x:entity.data.position.x+1, y:entity.data.position.y}, {x:1, y:0}));
+									array_push(entities, bulletGood({x:entity.data.position.x-1, y:entity.data.position.y}, {x:-1, y:0}));
+									array_push(entities, bulletGood({x:entity.data.position.x, y:entity.data.position.y+1}, {x:0, y:1}));
+									array_push(entities, bulletGood({x:entity.data.position.x, y:entity.data.position.y-1}, {x:0, y:-1}));
+								break;
+							}
+						}
+					}
+				}
+				
+				currentLine++;
+				array_push(terminalQueue, createText({x : 0, y : currentLine - 1}, "Pew!", terminalColour, 100));
+			break;
 			
+			case "clear":
+				clear();
 			break;
 			
 			case "pause":
